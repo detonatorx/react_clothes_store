@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import './directory.component.scss';
+import './directory.styles.scss';
 import MenuItem from '../menu-item/menu-item.component';
 
 const Directory = () => {
@@ -38,8 +37,7 @@ const Directory = () => {
     },
   ];
 
-  // eslint-disable-next-line
-  const [sections, setSections] = useState(initial);
+  const sections = initial;
 
   return (
     <div>
