@@ -23,14 +23,14 @@ const Directory = () => {
       linkUrl: 'shop/sneakers',
     },
     {
-      title: 'womens',
+      title: 'women',
       imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
       size: 'large',
       id: 4,
       linkUrl: 'shop/womens',
     },
     {
-      title: 'mens',
+      title: 'men',
       imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
       size: 'large',
       id: 5,
@@ -38,14 +38,15 @@ const Directory = () => {
     },
   ];
 
+  // eslint-disable-next-line
   const [sections, setSections] = useState(initial);
 
   return (
     <div>
       <div className="directory-menu">
         {sections &&
-          sections.map(({ title, imageUrl, id, size }) => (
-            <MenuItem title={title} id={id} imageUrl={imageUrl} size={size} />
+          sections.map(({ id, ...otherSectionProps }) => (
+            <MenuItem key={id} {...otherSectionProps} />
           ))}
       </div>
     </div>
