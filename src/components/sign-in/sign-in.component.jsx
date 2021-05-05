@@ -3,29 +3,24 @@ import FormInput from '../form-input/form-input.component';
 import { useState } from 'react';
 import CustomButton from '../custom-button/custom-button.component';
 // import { signInWithGoogle } from '../../firebase/firebase.utils';
-import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth } from '../../firebase/firebase.utils';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 
 export default function SignIn() {
-  const [user, setUser] = useState({ email: '', password: '' });
+  const [user, setUser] = useState({ email: '', password: '', message: '' });
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = async event => {
     event.preventDefault();
-
     const { email, password } = user;
 
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      setUser({
-        email: '',
-        password: '',
-      });
-
       console.log('login ok');
-      dispatch({ type: 'SET_CURRENT_USER', payload: user });
+
+      dispatch({ type: 'SET_CURRENT_USER', payload: user.email });
       history.push('/');
     } catch (error) {
       console.log(error);
@@ -33,7 +28,7 @@ export default function SignIn() {
   };
 
   const handleChange = event => {
-    const { name, value } = event.currentTarget;
+    const { name, value } = event.target;
 
     setUser({ ...user, [name]: value });
   };

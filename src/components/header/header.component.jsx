@@ -16,7 +16,7 @@ const Header = () => {
       {/* <div>{console.log(currentUser)}</div> */}
       <div className="options">
         <Link className="option" to="/shop">
-          SHOP
+          loglog SHOP
         </Link>
         <Link className="option" to="/shop">
           CONTACT

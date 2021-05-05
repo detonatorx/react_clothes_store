@@ -20,7 +20,6 @@ export default function SignUp() {
 
   const handleSubmit = async event => {
     event.preventDefault();
-
     const { displayName, email, password, confirmPassword } = userAuth;
 
     if (password !== confirmPassword) {
@@ -36,15 +35,8 @@ export default function SignUp() {
 
       await createUserProfileDocument(user, { displayName });
 
-      setUser({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      });
-
       console.log('reg ok');
-      dispatch({ type: 'SET_CURRENT_USER', payload: userAuth });
+      dispatch({ type: 'SET_CURRENT_USER', payload: userAuth.email });
       history.push('/');
     } catch (error) {
       console.error(error);
