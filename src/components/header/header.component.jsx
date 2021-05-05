@@ -2,13 +2,12 @@ import './header.styles.scss';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
 import { auth } from '../../firebase/firebase.utils';
-import {useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 
-export default function Header() {
-  // const [curr, setCurr] = useState(currentUser);
-  // useEffect(() => {
-  //   console.log('ok');
-  // }, [curr]);
+const Header = () => {
+  const currentUser = useSelector(state => state.user.currentUser);
+  const dispatch = useDispatch();
+
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -22,18 +21,30 @@ export default function Header() {
         <Link className="option" to="/shop">
           CONTACT
         </Link>
-        {/* {console.log(currentUser)}
 
-        {currentUser !== 'null' ? (
-          <div className="option" onClick={() => auth.signOut()}>
+        {currentUser ? (
+          <div
+            className="option"
+            onClick={() => {
+              auth.signOut();
+              dispatch({ type: 'USER_NULL' });
+            }}
+          >
             SIGN OUT
           </div>
         ) : (
           <Link className="option" to="/signin">
             SIGN IN
           </Link>
-        )} */}
+        )}
       </div>
     </div>
   );
-}
+};
+
+// const mapStateToProps = state => ({
+//   currentUser: state.user.currentUser,
+// });
+
+// export default connect(mapStateToProps)(Header);
+export default Header;

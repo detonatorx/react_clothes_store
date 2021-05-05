@@ -6,6 +6,7 @@ import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-up/sign-in-sign-up.component';
 import { auth } from './firebase/firebase.utils';
+import {connect} from 'react-redux'
 
 function App() {
   // const [userGoogleAuth, setUserGoogleAuth] = useState({ currentUser: null });
@@ -31,4 +32,6 @@ function App() {
   );
 }
 
-export default App;
+
+
+export default connect()(App);

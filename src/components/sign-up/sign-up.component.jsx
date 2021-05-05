@@ -4,19 +4,24 @@ import { useState } from 'react';
 import CustomButton from '../custom-button/custom-button.component';
 // import { signInWithGoogle } from '../../firebase/firebase.utils';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 
 export default function SignUp() {
-  const [user, setUser] = useState({
+  const [userAuth, setUser] = useState({
     displayName: '',
     email: '',
     password: '',
     confirmPassword: '',
   });
 
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const handleSubmit = async event => {
     event.preventDefault();
 
-    const { displayName, email, password, confirmPassword } = user;
+    const { displayName, email, password, confirmPassword } = userAuth;
 
     if (password !== confirmPassword) {
       alert("passwords don't match");
@@ -39,6 +44,8 @@ export default function SignUp() {
       });
 
       console.log('reg ok');
+      dispatch({ type: 'SET_CURRENT_USER', payload: userAuth });
+      history.push('/');
     } catch (error) {
       console.error(error);
     }
@@ -47,7 +54,7 @@ export default function SignUp() {
   const handleChange = event => {
     const { name, value } = event.currentTarget;
 
-    setUser({ ...user, [name]: value });
+    setUser({ ...userAuth, [name]: value });
   };
 
   return (
@@ -58,7 +65,7 @@ export default function SignUp() {
         <FormInput
           type="text"
           name="displayName"
-          value={user.displayName}
+          value={userAuth.displayName}
           onChange={handleChange}
           label="Display Name"
           required
@@ -66,7 +73,7 @@ export default function SignUp() {
         <FormInput
           type="email"
           name="email"
-          value={user.email}
+          value={userAuth.email}
           onChange={handleChange}
           label="email"
           required
@@ -74,7 +81,7 @@ export default function SignUp() {
         <FormInput
           type="password"
           name="password"
-          value={user.password}
+          value={userAuth.password}
           onChange={handleChange}
           label="password"
           required
@@ -82,7 +89,7 @@ export default function SignUp() {
         <FormInput
           type="password"
           name="confirmPassword"
-          value={user.confirmPassword}
+          value={userAuth.confirmPassword}
           onChange={handleChange}
           label="Confirm Password"
           required

@@ -4,9 +4,13 @@ import { useState } from 'react';
 import CustomButton from '../custom-button/custom-button.component';
 // import { signInWithGoogle } from '../../firebase/firebase.utils';
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 
 export default function SignIn() {
   const [user, setUser] = useState({ email: '', password: '' });
+  const dispatch = useDispatch();
+  const history = useHistory()
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -21,6 +25,8 @@ export default function SignIn() {
       });
 
       console.log('login ok');
+      dispatch({ type: 'SET_CURRENT_USER', payload: user });
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
