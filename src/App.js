@@ -1,11 +1,11 @@
 import './App.css';
 import Homepage from './pages/homepage/homepage.component.jsx';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-up/sign-in-sign-up.component';
 // import { auth } from './firebase/firebase.utils';
-import {connect} from 'react-redux'
+import { useSelector } from 'react-redux';
 
 function App() {
   // const [userGoogleAuth, setUserGoogleAuth] = useState({ currentUser: null });
@@ -18,19 +18,21 @@ function App() {
   //   });
   //   return 'ok';
   // }, []);
+  const currentUser = useSelector(state => state.user.currentUser);
+  console.log(currentUser);
 
   return (
     <div>
-      <Header/>
+      <Header />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/shop" component={ShopPage} />
-        <Route path="/signin" component={SignInAndSignUpPage} />
+        <Route path="/signin">
+          {currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />}
+        </Route>
       </Switch>
     </div>
   );
 }
 
-
-
-export default connect()(App);
+export default App;

@@ -13,10 +13,9 @@ const Header = () => {
       <Link className="logo-container" to="/">
         <img src={logo} alt="logo" />
       </Link>
-      {/* <div>{console.log(currentUser)}</div> */}
       <div className="options">
         <Link className="option" to="/shop">
-          loglog SHOP
+          SHOP
         </Link>
         <Link className="option" to="/shop">
           CONTACT
