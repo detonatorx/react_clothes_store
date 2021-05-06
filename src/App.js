@@ -19,7 +19,6 @@ function App() {
   //   return 'ok';
   // }, []);
   const currentUser = useSelector(state => state.user.currentUser);
-  console.log(currentUser);
 
   return (
     <div>

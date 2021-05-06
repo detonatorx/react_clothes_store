@@ -1,11 +1,19 @@
 import './header.styles.scss';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo.png';
+import logo from '../../assets/logo.png';
 import { auth } from '../../firebase/firebase.utils';
 import { useSelector, useDispatch } from 'react-redux';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 const Header = () => {
   const currentUser = useSelector(state => state.user.currentUser);
+  const cart = useSelector(state => state.cart.hidden);
+  // const state = useSelector(({ user: { currentUser }, cart: { hidden } }) => ({
+  //   currentUser,
+  //   cart,
+  // }));
+
   const dispatch = useDispatch();
 
   return (
@@ -36,7 +44,11 @@ const Header = () => {
             SIGN IN
           </Link>
         )}
+
+        <CartIcon />
       </div>
+
+      {cart ? null : <CartDropdown />}
     </div>
   );
 };
