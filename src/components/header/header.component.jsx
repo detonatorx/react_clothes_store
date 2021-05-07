@@ -35,6 +35,7 @@ const Header = () => {
             onClick={() => {
               auth.signOut();
               dispatch({ type: 'USER_NULL' });
+              // window.localStorage.removeItem('app_state');
             }}
           >
             SIGN OUT

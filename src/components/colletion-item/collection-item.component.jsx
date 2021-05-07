@@ -1,7 +1,12 @@
 import './collection-item.style.scss';
 import CustomButton from '../custom-button/custom-button.component';
+import { addItemAC } from '../../redux/cart/cart.reducer';
+import { useDispatch } from 'react-redux';
 
-export default function CollectionItem({ id, name, price, imageUrl }) {
+export default function CollectionItem({ item }) {
+  const dispatch = useDispatch();
+  const { name, price, imageUrl } = item;
+
   return (
     <div className="collection-item">
       <div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />
@@ -10,7 +15,9 @@ export default function CollectionItem({ id, name, price, imageUrl }) {
         <span className="price">${price}</span>
       </div>
 
-      <CustomButton inverted>Add to cart</CustomButton>
+      <CustomButton onClick={() => dispatch(addItemAC(item))} inverted>
+        Add to cart
+      </CustomButton>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   hidden: true,
+  cartItems: [],
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -9,9 +10,18 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         hidden: !state.hidden,
       };
+
+    case 'ADD_ITEM':
+      return {
+        ...state,
+        cartItems: [...state.cartItems, action.payload],
+      };
+
     default:
       return state;
   }
 };
 
-export default cartReducer;
+const addItemAC = payload => ({ type: 'ADD_ITEM', payload });
+
+export { cartReducer, addItemAC };
