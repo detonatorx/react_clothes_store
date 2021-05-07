@@ -1,5 +1,6 @@
 import './checkout.styles.scss';
 import { useSelector } from 'react-redux';
+import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
 const CheckoutPage = () => {
   const cartItems = useSelector(state => state.cart.cartItems);
@@ -30,7 +31,10 @@ const CheckoutPage = () => {
         </div>
       </div>
 
-      {cartItems && cartItems.map(cartItem => cartItem.name)}
+      {cartItems &&
+        cartItems.map(cartItem => (
+          <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+        ))}
 
       <div className="total">TOTAL: ${summTotal}</div>
     </div>
