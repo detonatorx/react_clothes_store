@@ -4,11 +4,11 @@ import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
 import { useSelector, useDispatch } from 'react-redux';
 
 const CartIcon = () => {
-  const quantity = useSelector(state =>
-    state.cart.cartItems.reduce((total, cartItem) => {
+  const cartQuantity = useSelector(state => {
+    return state.cart.cartItems.reduce((total, cartItem) => {
       return total + cartItem.quantity;
-    }, 0)
-  );
+    }, 0);
+  });
 
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ const CartIcon = () => {
   return (
     <div className="cart-icon" onClick={toggleCartHidden}>
       <ShoppingIcon className="shopping-icon" />
-      <span className="item-count">{quantity}</span>
+      <span className="item-count">{cartQuantity}</span>
     </div>
   );
 };

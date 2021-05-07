@@ -4,20 +4,10 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-up/sign-in-sign-up.component';
-// import { auth } from './firebase/firebase.utils';
+import CheckoutPage from './pages/checkout/checkout.component'
 import { useSelector } from 'react-redux';
 
 function App() {
-  // const [userGoogleAuth, setUserGoogleAuth] = useState({ currentUser: null });
-  // console.log('-> ', userGoogleAuth);
-
-  // useEffect(() => {
-  //   auth.onAuthStateChanged(user => {
-  //     setUserGoogleAuth({ currentUser: user });
-  //     // console.log(user);
-  //   });
-  //   return 'ok';
-  // }, []);
   const currentUser = useSelector(state => state.user.currentUser);
 
   return (
@@ -26,9 +16,14 @@ function App() {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/shop" component={ShopPage} />
-        <Route path="/signin">
-          {currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />}
-        </Route>
+        <Route path="/checkout" component={CheckoutPage} />
+        <Route
+          exact
+          path="/signin"
+          render={() =>
+            currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+          }
+        />
       </Switch>
     </div>
   );

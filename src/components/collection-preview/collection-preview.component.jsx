@@ -1,5 +1,5 @@
 import './collection-preview.styles.scss';
-import CollectionItem from '../colletion-item/collection-item.component';
+import CollectionItem from '../collection-item/collection-item.component';
 
 export default function CollectionPreview({ title, items }) {
   return (
