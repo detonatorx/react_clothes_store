@@ -1,9 +1,15 @@
 import './cart-icon.styles.scss';
 
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const CartIcon = () => {
+  const quantity = useSelector(state =>
+    state.cart.cartItems.reduce((total, cartItem) => {
+      return total + cartItem.quantity;
+    }, 0)
+  );
+
   const dispatch = useDispatch();
 
   const toggleCartHidden = () => {
@@ -13,7 +19,7 @@ const CartIcon = () => {
   return (
     <div className="cart-icon" onClick={toggleCartHidden}>
       <ShoppingIcon className="shopping-icon" />
-      <span className="item-count">0</span>
+      <span className="item-count">{quantity}</span>
     </div>
   );
 };
