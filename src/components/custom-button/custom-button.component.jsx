@@ -1,10 +1,12 @@
 import './custom-button.styles.scss';
 
-export default function CustomButton({children, ...otherProps}) {
+export default function CustomButton({ children, inverted, ...otherProps }) {
   return (
-    <button className="custom-button" {...otherProps}>
+    <button
+      className={`${inverted ? 'inverted' : ''} custom-button`}
+      {...otherProps}
+    >
       {children}
     </button>
-  )
+  );
 }
-
