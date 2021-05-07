@@ -19,11 +19,20 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         cartItems: addItemToCart(state.cartItems, action.payload),
       };
 
+    case 'REMOVE_ITEM':
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          cartItem => cartItem.id !== action.payload
+        ),
+      };
+
     default:
       return state;
   }
 };
 
 const addItemAC = payload => ({ type: 'ADD_ITEM', payload });
+const removeItemAC = payload => ({ type: 'REMOVE_ITEM', payload });
 
-export { cartReducer, addItemAC };
+export { cartReducer, addItemAC, removeItemAC };
