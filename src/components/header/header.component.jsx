@@ -8,7 +8,7 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 const Header = () => {
   const currentUser = useSelector(state => state.user.currentUser);
-  const cart = useSelector(state => state.cart.hidden);
+  const cartHidden = useSelector(state => state.cart.hidden);
   // const state = useSelector(({ user: { currentUser }, cart: { hidden } }) => ({
   //   currentUser,
   //   cart,
@@ -49,7 +49,7 @@ const Header = () => {
         <CartIcon />
       </div>
 
-      {cart ? null : <CartDropdown />}
+      {cartHidden ? null : <CartDropdown />}
     </div>
   );
 };

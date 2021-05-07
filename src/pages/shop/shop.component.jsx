@@ -1,4 +1,4 @@
-import SHOP_DATA from './shopData';
+import SHOP_DATA from '../../mockup_data/shopData';
 import CollectionPreview from '../../components/collection-preview/collection-preview.component'
 
 export default function ShopPage() {
