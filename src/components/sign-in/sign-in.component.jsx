@@ -23,7 +23,7 @@ export default function SignIn() {
       dispatch({ type: 'SET_CURRENT_USER', payload: user.email });
       history.push('/');
     } catch (error) {
-      console.log(error);
+      setUser({ ...user, message: error.message });
     }
   };
 
@@ -35,7 +35,8 @@ export default function SignIn() {
 
   return (
     <div className="sign-in">
-      <h2>I already have an account</h2>
+      <span className="error">{user.message}</span>
+      <h2 className="title">I already have an account</h2>
       <span>Sign in with your email and password</span>
 
       <form onSubmit={handleSubmit}>

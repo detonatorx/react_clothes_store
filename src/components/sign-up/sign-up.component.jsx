@@ -13,6 +13,7 @@ export default function SignUp() {
     email: '',
     password: '',
     confirmPassword: '',
+    message: '',
   });
 
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ export default function SignUp() {
       dispatch({ type: 'SET_CURRENT_USER', payload: userAuth.email });
       history.push('/');
     } catch (error) {
-      console.error(error);
+      setUser({...userAuth, message: error.message});
     }
   };
 
@@ -51,6 +52,7 @@ export default function SignUp() {
 
   return (
     <div className="sign-up">
+      <span className="error">{userAuth.message}</span>
       <h2 className="title">I do not have a account</h2>
       <span>Sign up with your email and password</span>
       <form className="sign-up-form" onSubmit={handleSubmit}>

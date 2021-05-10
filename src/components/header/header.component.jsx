@@ -9,10 +9,6 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 const Header = () => {
   const currentUser = useSelector(state => state.user.currentUser);
   const cartHidden = useSelector(state => state.cart.hidden);
-  // const state = useSelector(({ user: { currentUser }, cart: { hidden } }) => ({
-  //   currentUser,
-  //   cart,
-  // }));
 
   const dispatch = useDispatch();
 
@@ -25,9 +21,9 @@ const Header = () => {
         <Link className="option" to="/shop">
           SHOP
         </Link>
-        <Link className="option" to="/shop">
+        {/* <Link className="option" to="/shop">
           CONTACT
-        </Link>
+        </Link> */}
 
         {currentUser ? (
           <div
