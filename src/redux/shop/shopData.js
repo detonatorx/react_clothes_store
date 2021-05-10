@@ -152,10 +152,10 @@ const SHOP_DATA = {
       },
     ],
   },
-  women: {
+  womens: {
     id: 4,
-    title: 'Women',
-    routeName: 'women',
+    title: 'Womens',
+    routeName: 'womens',
     items: [
       {
         id: 23,
@@ -201,10 +201,10 @@ const SHOP_DATA = {
       },
     ],
   },
-  men: {
+  mens: {
     id: 5,
-    title: 'Men',
-    routeName: 'men',
+    title: 'Mens',
+    routeName: 'mens',
     items: [
       {
         id: 30,
