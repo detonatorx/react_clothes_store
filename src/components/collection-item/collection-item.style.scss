@@ -50,3 +50,10 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .collection-item {
+    width: 25vw;
+    height: 300px;
+  }
+}
