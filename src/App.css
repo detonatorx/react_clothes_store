@@ -8,6 +8,18 @@ a {
   color: black;
 }
 
+.root-container {
+  position: relative;
+  min-height: 85vh;
+}
+
+#detonatorx {
+  min-height: 5vh;
+  margin-left: 3%;
+  color: rgba(36, 54, 211, 0.822);
+  font-weight: bold;
+}
+
 @media (max-width: 1200px) {
   .container {
     max-width: 970px;
