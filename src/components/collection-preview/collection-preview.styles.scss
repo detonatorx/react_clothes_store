@@ -8,8 +8,33 @@
     margin-bottom: 25px;
   }
 
+  // .preview {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   justify-content: space-between;
+  // }
   .preview {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+
+    & .collection-item {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .collection-preview {
+    .preview {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 20px;
+      align-self: center;
+
+      & .collection-item {
+        margin-bottom: 50px;
+      }
+    }
   }
 }
