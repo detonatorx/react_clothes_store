@@ -30,4 +30,7 @@ a {
   .container {
     max-width: none;
   }
+  .checkout-page {
+    width: 95%;
+  }
 }
