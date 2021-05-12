@@ -43,6 +43,6 @@ a {
     max-width: none;
   }
   .checkout-page {
-    width: 95%;
+    min-width: 90%;
   }
 }
