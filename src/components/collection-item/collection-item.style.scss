@@ -55,5 +55,11 @@
   .collection-item {
     width: 25vw;
     height: 300px;
+
+    .custom-button {
+      min-width: 100px;
+      padding: 0;
+      top: 220px;
+    }
   }
 }
