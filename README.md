@@ -2,7 +2,7 @@
 
 ## Интернет-магазин одежды
 
-**Single-page приложение на React'е, без бэкэнда**
+**Single-page приложение на React'е, без бэкэнда, авторизация реализована путем Google Firebase**
 
 <a href="https://ibb.co/Npt81GQ"><img src="https://i.ibb.co/L6YLQsb/2021-05-10-21h18-00.png" alt="2021-05-10-21h18-00" border="0"></a>
 
